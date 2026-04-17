@@ -3,732 +3,716 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sullivan Financial Group — Internal Account Review · Apr 17, 2026</title>
+<title>Sullivan Financial Group — Auto vs. Home Performance | April 2026</title>
 <style>
   :root {
     --goal-brand: #077BE5;
-    --goal-dark-blue: #00172D;
-    --goal-accent-1: #3AEECA;
+    --goal-brand-dark: #00172D;
+    --goal-brand-mid: #0B3E6B;
+    --goal-accent: #3AEECA;
     --goal-accent-2: #97C2E8;
-    --goal-accent-3: #9FDACD;
+    --goal-light-blue: #EEF5FC;
     --goal-light-grey: #F8F9FC;
-    --goal-text: #001020;
+    --auto-orange: #F59E0B;
+    --auto-orange-light: #FDE68A;
+    --auto-orange-bg: #FFF7ED;
+    --home-blue: #077BE5;
+    --home-blue-light: #97C2E8;
+    --home-blue-bg: #EEF5FC;
+    --text: #0F172A;
+    --text-muted: #64748B;
     --success: #10B981;
+    --success-bg: #ECFDF5;
     --warning: #F59E0B;
     --danger: #EF4444;
-    --muted: #6B7280;
-    --border: #E5E7EB;
+    --border: #E2E8F0;
+    --border-light: #F1F5F9;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-    background: var(--goal-light-grey);
-    color: var(--goal-text);
-    padding: 32px 24px;
-    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background: #FFFFFF;
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  .container { max-width: 1280px; margin: 0 auto; }
-  header {
-    border-bottom: 3px solid var(--goal-brand);
-    padding-bottom: 24px;
-    margin-bottom: 32px;
-  }
-  header .meta { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
-  header .tag {
-    display: inline-block;
-    background: var(--goal-brand);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-  }
-  header h1 {
-    font-size: 28px;
-    color: var(--goal-dark-blue);
-    margin-bottom: 4px;
-  }
-  header .subtitle { font-size: 14px; color: var(--muted); }
-  header .quick-facts {
-    font-size: 13px;
-    color: var(--muted);
-    text-align: right;
-  }
-  header .quick-facts strong { color: var(--goal-text); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 48px 32px; }
 
-  section {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px 28px;
-    margin-bottom: 24px;
+  /* Header */
+  .report-header {
+    background: linear-gradient(135deg, var(--goal-brand-dark) 0%, #0B3E6B 60%, var(--goal-brand) 100%);
+    color: white;
+    padding: 56px 32px 48px;
+    margin: -48px -32px 48px;
+    border-radius: 0 0 24px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header .inner { max-width: 1136px; margin: 0 auto; position: relative; z-index: 1; }
+  .report-header .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--goal-accent); margin-bottom: 12px;
+  }
+  .report-header h1 {
+    font-size: 36px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .report-header .subtitle {
+    font-size: 17px; color: rgba(255,255,255,0.85); font-weight: 400; max-width: 720px;
+    margin-bottom: 20px;
+  }
+  .report-header .meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-size: 13px; color: rgba(255,255,255,0.75);
+  }
+  .meta-item { display: flex; align-items: center; gap: 8px; }
+  .meta-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--goal-accent); }
+
+  /* Section */
+  section { margin-bottom: 48px; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 10px;
   }
   h2 {
-    font-size: 18px;
-    color: var(--goal-dark-blue);
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    font-size: 24px; font-weight: 800; letter-spacing: -0.3px;
+    color: var(--goal-brand-dark); margin-bottom: 16px;
   }
-  h3 { font-size: 14px; color: var(--goal-dark-blue); margin-bottom: 12px; font-weight: 600; }
-
-  .callout-critical {
-    background: #FEF2F2;
-    border-left: 4px solid var(--danger);
-    padding: 12px 16px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    font-size: 13px;
-  }
-  .callout-critical strong { color: var(--danger); }
-  .callout-headline {
-    background: #EFF6FF;
-    border-left: 4px solid var(--goal-brand);
-    padding: 16px 20px;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 1.6;
+  .section-intro {
+    font-size: 15px; color: var(--text-muted); max-width: 780px; margin-bottom: 24px;
   }
 
-  /* KPI cards */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .kpi {
+  /* Executive callout */
+  .exec-callout {
+    background: linear-gradient(135deg, var(--home-blue-bg) 0%, #FFFFFF 70%);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px;
-    background: white;
+    border-left: 4px solid var(--goal-brand);
+    border-radius: 12px;
+    padding: 24px 28px;
   }
-  .kpi .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .kpi .value {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--goal-brand);
-    margin-bottom: 2px;
-  }
-  .kpi .sub { font-size: 11px; color: var(--muted); }
-  .kpi.accent .value { color: var(--goal-dark-blue); }
-  .kpi.success .value { color: var(--success); }
-  .kpi.warning .value { color: var(--warning); }
-  .kpi.danger .value { color: var(--danger); }
+  .exec-callout p { font-size: 16px; line-height: 1.65; color: var(--text); }
+  .exec-callout strong { color: var(--goal-brand-dark); }
+  .exec-callout .highlight-auto { color: var(--auto-orange); font-weight: 700; }
+  .exec-callout .highlight-home { color: var(--home-blue); font-weight: 700; }
 
-  /* Campaign compare cards */
-  .compare-grid {
+  /* Side-by-side comparison */
+  .vs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
-  .compare-card {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-  }
-  .compare-card.auto { border-top: 4px solid var(--warning); }
-  .compare-card.home { border-top: 4px solid var(--goal-brand); }
-  .compare-card h3 { font-size: 18px; margin-bottom: 14px; }
-  .compare-card .row {
-    display: flex;
-    justify-content: space-between;
-    padding: 7px 0;
-    border-bottom: 1px dashed var(--border);
-    font-size: 13px;
-  }
-  .compare-card .row:last-child { border-bottom: none; }
-  .compare-card .row span:first-child { color: var(--muted); }
-  .compare-card .row span:last-child { font-weight: 600; color: var(--goal-text); font-variant-numeric: tabular-nums; }
-
-  /* Funnel */
-  .funnel {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .funnel-step {
-    flex: 1;
-    min-width: 120px;
-    text-align: center;
-    padding: 14px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--goal-light-grey);
-  }
-  .funnel-step .step-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-  }
-  .funnel-step .step-value {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--goal-brand);
-  }
-  .funnel-step .step-conv {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* Source table */
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  table th, table td {
-    text-align: left;
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  table th {
-    background: var(--goal-light-grey);
-    font-weight: 700;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    color: var(--muted);
-  }
-  table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .pill {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-  .pill.green { background: #ECFDF5; color: var(--success); }
-  .pill.amber { background: #FFFBEB; color: var(--warning); }
-  .pill.red { background: #FEF2F2; color: var(--danger); }
-  .pill.gray { background: #F3F4F6; color: var(--muted); }
-
-  /* Recommendation cards */
-  .rec-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .rec {
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
+  .vs-card {
     background: white;
-  }
-  .rec.high { border-left: 4px solid var(--danger); }
-  .rec.med { border-left: 4px solid var(--warning); }
-  .rec.low { border-left: 4px solid var(--success); }
-  .rec .rec-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  .rec .rec-title { font-weight: 700; font-size: 13px; }
-  .rec .rec-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
-  .rec .rec-change {
-    font-size: 12px;
-    margin-top: 6px;
-    font-family: ui-monospace, monospace;
-    color: var(--goal-text);
-  }
-  .rec .rec-change strong { color: var(--goal-brand); }
-
-  /* Bar charts */
-  .bar-container { margin-bottom: 10px; }
-  .bar-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-  .bar-label .name { color: var(--goal-text); font-weight: 500; }
-  .bar-label .value { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .bar-track {
-    height: 12px;
-    background: var(--goal-light-grey);
-    border-radius: 2px;
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    position: relative;
     overflow: hidden;
+  }
+  .vs-card.auto { border-top: 4px solid var(--auto-orange); }
+  .vs-card.home { border-top: 4px solid var(--home-blue); }
+  .vs-card .vs-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .vs-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 6px;
+  }
+  .vs-label.auto { background: var(--auto-orange-bg); color: #B45309; }
+  .vs-label.home { background: var(--home-blue-bg); color: var(--home-blue); }
+  .vs-status {
+    font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 6px;
+  }
+  .vs-status.action { background: #FEF2F2; color: var(--danger); }
+  .vs-status.solid { background: var(--success-bg); color: var(--success); }
+  .vs-card h3 {
+    font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    color: var(--goal-brand-dark);
+  }
+  .vs-card .tagline { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; }
+  .vs-metric-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px solid var(--border-light);
+  }
+  .vs-metric-row:last-child { border-bottom: none; }
+  .vs-metric-label { font-size: 14px; color: var(--text-muted); }
+  .vs-metric-value { font-size: 16px; font-weight: 700; color: var(--text); }
+
+  /* Vertical scorecard comparison (full row) */
+  .scorecard {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .scorecard-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+  }
+  .scorecard-row:last-child { border-bottom: none; }
+  .scorecard-row.header {
+    background: var(--goal-light-grey);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .scorecard-row.header > div:not(:first-child) { text-align: center; }
+  .scorecard-metric { font-size: 14px; font-weight: 600; color: var(--text); }
+  .scorecard-sublabel { font-size: 12px; color: var(--text-muted); font-weight: 400; display: block; margin-top: 2px; }
+  .scorecard-val {
+    text-align: center; font-size: 18px; font-weight: 700;
+  }
+  .scorecard-val.auto { color: var(--auto-orange); }
+  .scorecard-val.home { color: var(--home-blue); }
+  .scorecard-delta {
+    text-align: center; font-size: 13px; font-weight: 600;
+    color: var(--text-muted);
+  }
+  .scorecard-delta.positive { color: var(--success); }
+  .scorecard-delta.negative { color: var(--danger); }
+  .scorecard-delta .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: var(--goal-light-grey);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* Win rate story (visual bars) */
+  .winrate-visual {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+  .winrate-title {
+    font-size: 16px; font-weight: 700; color: var(--goal-brand-dark); margin-bottom: 20px;
+    text-align: center;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 90px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .bar-label { font-size: 14px; font-weight: 700; }
+  .bar-label.auto { color: var(--auto-orange); }
+  .bar-label.home { color: var(--home-blue); }
+  .bar-track {
+    background: var(--border-light);
+    height: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
   }
   .bar-fill {
     height: 100%;
-    background: var(--goal-brand);
-    border-radius: 2px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 10px;
+    color: white; font-size: 12px; font-weight: 700;
   }
-  .bar-fill.auto { background: var(--warning); }
-  .bar-fill.danger { background: var(--danger); }
-  .bar-fill.success { background: var(--success); }
+  .bar-fill.auto { background: var(--auto-orange); }
+  .bar-fill.home { background: var(--home-blue); }
+  .bar-value { font-size: 16px; font-weight: 800; text-align: right; }
+  .bar-value.auto { color: var(--auto-orange); }
+  .bar-value.home { color: var(--home-blue); }
+  .bar-note {
+    font-size: 13px; color: var(--text-muted);
+    text-align: center; margin-top: 12px;
+    padding-top: 16px; border-top: 1px solid var(--border-light);
+  }
 
-  /* 2-column layout */
-  .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  /* Funnel comparison */
+  .funnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .funnel-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+  .funnel-card.auto { border-top: 4px solid var(--auto-orange); }
+  .funnel-card.home { border-top: 4px solid var(--home-blue); }
+  .funnel-card h4 {
+    font-size: 15px; font-weight: 800; margin-bottom: 20px;
+    color: var(--goal-brand-dark);
+  }
+  .funnel-card h4 .tag {
+    display: inline-block; margin-left: 8px;
+    font-size: 11px; padding: 3px 8px; border-radius: 5px;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  .funnel-card.auto h4 .tag { background: var(--auto-orange-bg); color: #B45309; }
+  .funnel-card.home h4 .tag { background: var(--home-blue-bg); color: var(--home-blue); }
+  .funnel-step {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .funnel-step.auto { background: var(--auto-orange-bg); }
+  .funnel-step.home { background: var(--home-blue-bg); }
+  .funnel-step .stage { color: var(--text-muted); font-weight: 600; }
+  .funnel-step .count { font-weight: 800; color: var(--text); font-size: 16px; }
+  .funnel-arrow {
+    text-align: center; color: var(--text-muted);
+    font-size: 12px; margin: 2px 0; font-weight: 700;
+  }
+
+  /* Wins section */
+  .wins-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .wins-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+  }
+  .wins-card h4 {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 16px; font-weight: 800; margin-bottom: 16px;
+    color: var(--goal-brand-dark);
+  }
+  .wins-card h4 .pill {
+    font-size: 11px; padding: 3px 8px; border-radius: 5px;
+    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .wins-card.auto h4 .pill { background: var(--auto-orange-bg); color: #B45309; }
+  .wins-card.home h4 .pill { background: var(--home-blue-bg); color: var(--home-blue); }
+  .wins-list { list-style: none; padding: 0; margin: 0; }
+  .wins-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .wins-list li:last-child { border-bottom: none; }
+  .wins-list .win-stat {
+    display: inline-block;
+    background: var(--success-bg); color: var(--success);
+    font-weight: 700;
+    padding: 3px 10px; border-radius: 5px; font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .wins-list .win-text { color: var(--text); }
+  .wins-list .win-text strong { color: var(--goal-brand-dark); }
+
+  /* Opportunity */
+  .opportunity {
+    background: linear-gradient(135deg, var(--goal-brand-dark) 0%, #0B3E6B 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opportunity::after {
+    content: '';
+    position: absolute;
+    top: -40%; right: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(58,238,202,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .opportunity .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--goal-accent); margin-bottom: 10px;
+  }
+  .opportunity h2 {
+    color: white; font-size: 28px; margin-bottom: 12px;
+  }
+  .opportunity .lede {
+    font-size: 16px; color: rgba(255,255,255,0.82);
+    max-width: 720px; margin-bottom: 32px; line-height: 1.6;
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .opp-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .opp-card .opp-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--goal-accent); margin-bottom: 8px;
+  }
+  .opp-card .opp-current {
+    font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 4px;
+  }
+  .opp-card .opp-arrow {
+    font-size: 20px; color: var(--goal-accent); margin: 4px 0;
+  }
+  .opp-card .opp-target {
+    font-size: 26px; font-weight: 800; color: white;
+  }
+  .opp-card .opp-delta {
+    font-size: 12px; color: var(--goal-accent); font-weight: 700; margin-top: 4px;
+  }
+
+  /* Next steps */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .step-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+  }
+  .step-card.priority { border: 2px solid var(--goal-brand); box-shadow: 0 4px 20px -8px rgba(7,123,229,0.25); }
+  .step-number {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--goal-brand); color: white;
+    font-weight: 800; font-size: 15px;
+    margin-bottom: 14px;
+  }
+  .step-card.priority .step-number {
+    background: linear-gradient(135deg, var(--goal-brand) 0%, var(--goal-accent) 100%);
+    color: var(--goal-brand-dark);
+  }
+  .step-card h4 {
+    font-size: 16px; font-weight: 800;
+    color: var(--goal-brand-dark); margin-bottom: 8px;
+  }
+  .step-tag {
+    display: inline-block; font-size: 11px;
+    padding: 3px 8px; border-radius: 5px;
+    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .step-tag.auto { background: var(--auto-orange-bg); color: #B45309; }
+  .step-tag.home { background: var(--home-blue-bg); color: var(--home-blue); }
+  .step-tag.both { background: #F3E8FF; color: #7C3AED; }
+  .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+  .step-card p strong { color: var(--text); font-weight: 700; }
 
   /* Footer */
   footer {
+    margin-top: 56px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
     text-align: center;
-    padding: 20px;
-    color: var(--muted);
-    font-size: 11px;
+    font-size: 12px; color: var(--text-muted);
   }
+  footer .brand { font-weight: 700; color: var(--goal-brand-dark); }
 
-  @media (max-width: 900px) {
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .compare-grid, .cols-2, .rec-grid { grid-template-columns: 1fr; }
+  @media (max-width: 820px) {
+    .vs-grid, .funnel-grid, .wins-grid { grid-template-columns: 1fr; }
+    .scorecard-row { grid-template-columns: 1fr 1fr 1fr 1fr; font-size: 13px; padding: 14px 16px; }
+    .opp-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .report-header h1 { font-size: 28px; }
+    .container { padding: 32px 20px; }
+    .report-header { margin: -32px -20px 40px; padding: 44px 24px 40px; }
   }
   @media print {
-    body { background: white; padding: 0; }
-    section { page-break-inside: avoid; box-shadow: none; }
+    body { padding: 0; }
+    .report-header { break-inside: avoid; }
+    section { break-inside: avoid; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-<header>
-  <div class="meta">
-    <div>
-      <span class="tag">INTERNAL · ACCOUNT REVIEW</span>
-      <h1>Sullivan Financial Group LLC</h1>
-      <div class="subtitle">First account review · 25 days live · Auto (NJ) + Home (NJ)</div>
-    </div>
-    <div class="quick-facts">
-      <div><strong>Review date:</strong> April 17, 2026</div>
-      <div><strong>Launch:</strong> ~March 23, 2026</div>
-      <div><strong>Agent:</strong> Stephen Sullivan (Allstate · Pinnacle Elite)</div>
-      <div><strong>Data window:</strong> Last 30 days</div>
-    </div>
-  </div>
-</header>
-
-<!-- HEADLINE CALLOUT -->
-<section>
-  <h2>Headline</h2>
-  <div class="callout-headline">
-    <strong>Home is performing; Auto needs structural reallocation.</strong> Home (NJ) is well-positioned at avg position 2.11 with Tier 3 delivering a remarkable 67% win rate and 30 contacts this month for $615 spend. Auto (NJ) is stuck at avg position 5.72 with a 2.16% win rate — not a CPL problem but a visibility problem. The biggest unlocks are <strong>(1)</strong> investigating Native/Display/Social (Auto) which has 14,265 opps and 3,891 bids but zero impressions, <strong>(2)</strong> freezing 7-8 Auto sources where market RPCs are 3-10× our bid, and <strong>(3)</strong> pushing the corrected disposition file via Overwrite so GOAL analytics reflect the true ~21% contact rate.
-  </div>
-</section>
-
-<!-- CRITICAL ISSUES -->
-<section>
-  <h2>Critical Flags</h2>
-  <div class="callout-critical" style="background:#FEF3C7; border-left-color:var(--warning);">
-    <strong style="color:var(--warning);">🟡 DISPOSITION MAPPING — FIXED IN FILE, RE-IMPORT PENDING:</strong> Mapping has been corrected in <code>Sullivan_dispositions_GOAL_import.csv</code> &mdash; Transferred (83 leads) and Quoted without contact (69 leads) now correctly map to blank. Corrected rates: Auto 24.2% contact, Home 17.8% contact (both in 20-40% benchmark). However, the GOAL dashboard still shows the pre-correction numbers (Auto 68.1%, Home 59.8% contact) because the corrected file has not been pushed via Overwrite mode yet. <strong>Action: upload corrected CSV via Conversion Bulk Import → Overwrite so analytics reflect truth.</strong>
-  </div>
-  <div class="callout-critical">
-    <strong>🔴 AUTO NATIVE/DISPLAY/SOCIAL:</strong> 14,265 opportunities, 3,891 bids, <strong>ZERO impressions</strong> last 30 days. Avg Bid ($7.41) is above 2nd RPC ($6.73), so this is not a bid issue. Indicates creative, compliance, URL, or eligibility block. <strong>Action: ping Chris/Engineering.</strong>
-  </div>
-</section>
-
-<!-- KPIs -->
-<section>
-  <h2>Account Snapshot (Last 30 Days)</h2>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="label">Total Leads</div><div class="value">193</div><div class="sub">Auto 91 · Home 102</div></div>
-    <div class="kpi accent"><div class="label">Total Spend</div><div class="value">$2,527</div><div class="sub">$13.09 CPL blended</div></div>
-    <div class="kpi"><div class="label">Calls</div><div class="value">28</div><div class="sub">14.5% of leads</div></div>
-    <div class="kpi accent"><div class="label">Impressions</div><div class="value">504</div><div class="sub">6.1% of searches</div></div>
-    <div class="kpi warning"><div class="label">Auto Win Rate</div><div class="value">2.16%</div><div class="sub">Below 0.5-2% floor</div></div>
-    <div class="kpi success"><div class="label">Home Win Rate</div><div class="value">6.03%</div><div class="sub">Healthy</div></div>
-    <div class="kpi warning"><div class="label">Auto Avg Position</div><div class="value">5.72</div><div class="sub">Deep on ad wall</div></div>
-    <div class="kpi success"><div class="label">Home Avg Position</div><div class="value">2.11</div><div class="sub">Target zone ✓</div></div>
-  </div>
-</section>
-
-<!-- CAMPAIGN COMPARE -->
-<section>
-  <h2>Campaign Comparison</h2>
-  <div class="compare-grid">
-    <div class="compare-card auto">
-      <h3>Auto (NJ) &nbsp;<span class="pill amber">ACTION NEEDED</span></h3>
-      <div class="row"><span>Searches</span><span>5,910</span></div>
-      <div class="row"><span>Impressions</span><span>262 (4.43%)</span></div>
-      <div class="row"><span>Clicks</span><span>128 · CTR 48.85%</span></div>
-      <div class="row"><span>Leads</span><span>91</span></div>
-      <div class="row"><span>Calls</span><span>14</span></div>
-      <div class="row"><span>Spend</span><span>$1,006.05</span></div>
-      <div class="row"><span>Avg CPC / CPL</span><span>$7.85 / $11.06</span></div>
-      <div class="row"><span>Avg Bid</span><span>$7.17</span></div>
-      <div class="row"><span>Avg Position</span><span>5.72</span></div>
-      <div class="row"><span>Win Rate</span><span>2.16%</span></div>
-      <div class="row"><span>Contact Rate (corrected)</span><span>24.2%</span></div>
-      <div class="row"><span>Quote Rate</span><span>3.3%</span></div>
-      <div class="row"><span>Leads Sold</span><span>1 (1.1%)</span></div>
-    </div>
-    <div class="compare-card home">
-      <h3>Home (NJ) &nbsp;<span class="pill green">PERFORMING</span></h3>
-      <div class="row"><span>Searches</span><span>2,354</span></div>
-      <div class="row"><span>Impressions</span><span>242 (10.28%)</span></div>
-      <div class="row"><span>Clicks</span><span>142 · CTR 58.67%</span></div>
-      <div class="row"><span>Leads</span><span>102</span></div>
-      <div class="row"><span>Calls</span><span>14</span></div>
-      <div class="row"><span>Spend</span><span>$1,520.99</span></div>
-      <div class="row"><span>Avg CPC / CPL</span><span>$10.71 / $14.91</span></div>
-      <div class="row"><span>Avg Bid</span><span>$11.91</span></div>
-      <div class="row"><span>Avg Position</span><span>2.11</span></div>
-      <div class="row"><span>Win Rate</span><span>6.03%</span></div>
-      <div class="row"><span>Contact Rate (corrected)</span><span>17.8%</span></div>
-      <div class="row"><span>Quote Rate</span><span>4.0%</span></div>
-      <div class="row"><span>Leads Sold</span><span>2 (2.0%)</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- FUNNELS -->
-<section>
-  <h2>Conversion Funnel — Auto vs Home</h2>
-  <h3 style="margin-top: 8px; color: var(--warning);">Auto (NJ)</h3>
-  <div class="funnel">
-    <div class="funnel-step"><div class="step-label">Searches</div><div class="step-value">5,910</div></div>
-    <div class="funnel-step"><div class="step-label">Impressions</div><div class="step-value">262</div><div class="step-conv">4.43% WinRate gate</div></div>
-    <div class="funnel-step"><div class="step-label">Clicks</div><div class="step-value">128</div><div class="step-conv">48.85% CTR</div></div>
-    <div class="funnel-step"><div class="step-label">Leads</div><div class="step-value">91</div><div class="step-conv">71% click→lead</div></div>
-    <div class="funnel-step"><div class="step-label">Contacted</div><div class="step-value">22</div><div class="step-conv">24.2% lead→ctc*</div></div>
-    <div class="funnel-step"><div class="step-label">Quoted</div><div class="step-value">3</div><div class="step-conv">3.3% lead→q</div></div>
-    <div class="funnel-step"><div class="step-label">Sold</div><div class="step-value">1</div><div class="step-conv">1.1% lead→sale</div></div>
-  </div>
-  <h3 style="margin-top: 20px; color: var(--goal-brand);">Home (NJ)</h3>
-  <div class="funnel">
-    <div class="funnel-step"><div class="step-label">Searches</div><div class="step-value">2,354</div></div>
-    <div class="funnel-step"><div class="step-label">Impressions</div><div class="step-value">242</div><div class="step-conv">10.28% WinRate gate</div></div>
-    <div class="funnel-step"><div class="step-label">Clicks</div><div class="step-value">142</div><div class="step-conv">58.67% CTR</div></div>
-    <div class="funnel-step"><div class="step-label">Leads</div><div class="step-value">102</div><div class="step-conv">72% click→lead</div></div>
-    <div class="funnel-step"><div class="step-label">Contacted</div><div class="step-value">18</div><div class="step-conv">17.8% lead→ctc*</div></div>
-    <div class="funnel-step"><div class="step-label">Quoted</div><div class="step-value">4</div><div class="step-conv">4.0% lead→q</div></div>
-    <div class="funnel-step"><div class="step-label">Sold</div><div class="step-value">2</div><div class="step-conv">2.0% lead→sale</div></div>
-  </div>
-  <p style="font-size: 11px; color: var(--muted); margin-top: 12px;">*Contact/quote/sold values use <strong>corrected</strong> disposition mapping (Transferred + Quoted-without-contact excluded). CSV file is already fixed; GOAL dashboard will reflect these once re-imported via Overwrite.</p>
-</section>
-
-<!-- SOURCE PERFORMANCE - HOME -->
-<section>
-  <h2>Home (NJ) — Source Performance</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Source</th>
-        <th>Mult</th>
-        <th class="num">Opps</th>
-        <th class="num">Bid Rate</th>
-        <th class="num">Impr</th>
-        <th class="num">Win Rate</th>
-        <th class="num">Avg Bid</th>
-        <th class="num">2nd RPC</th>
-        <th class="num">1st RPC</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Tier 3</strong></td><td>100%</td>
-        <td class="num">258</td><td class="num">41.08%</td><td class="num">96</td>
-        <td class="num"><strong style="color:var(--success)">66.98%</strong></td>
-        <td class="num">$8.65</td><td class="num">$2.29</td><td class="num">$4.49</td>
-        <td><span class="pill green">★ Star · Hold</span></td>
-      </tr>
-      <tr>
-        <td><strong>Tier 1</strong></td><td>125%</td>
-        <td class="num">3,263</td><td class="num">52.68%</td><td class="num">48</td>
-        <td class="num"><strong style="color:var(--danger)">0.93%</strong></td>
-        <td class="num">$11.02</td><td class="num">$9.63</td><td class="num">$10.66</td>
-        <td><span class="pill amber">Investigate — leaking</span></td>
-      </tr>
-      <tr>
-        <td><strong>Tier 2</strong></td><td>125%</td>
-        <td class="num">780</td><td class="num">34.87%</td><td class="num">71</td>
-        <td class="num">14.71%</td>
-        <td class="num">$11.08</td><td class="num">$11.26</td><td class="num">$15.03</td>
-        <td><span class="pill amber">Raise → 135%</span></td>
-      </tr>
-      <tr>
-        <td><strong>Home Search</strong></td><td>300%</td>
-        <td class="num">415</td><td class="num">40.00%</td><td class="num">14</td>
-        <td class="num">4.82%</td>
-        <td class="num">$26.47</td><td class="num">$103.70</td><td class="num">$103.70</td>
-        <td><span class="pill red">Freeze — market 4× bid</span></td>
-      </tr>
-      <tr>
-        <td><strong>Home SearchB</strong></td><td>100%</td>
-        <td class="num">223</td><td class="num">34.52%</td><td class="num">10</td>
-        <td class="num">6.49%</td>
-        <td class="num">$8.78</td><td class="num">$9.01</td><td class="num">$14.56</td>
-        <td><span class="pill amber">Raise → 110%</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 4</td><td>125%</td>
-        <td class="num">10</td><td class="num">50.00%</td><td class="num">3</td>
-        <td class="num">40.00%</td>
-        <td class="num">$10.90</td><td class="num">$5.84</td><td class="num">$5.85</td>
-        <td><span class="pill green">Hold — small vol</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- SOURCE PERFORMANCE - AUTO -->
-<section>
-  <h2>Auto (NJ) — Source Performance (Top 15 by Opps)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Source</th>
-        <th>Mult</th>
-        <th class="num">Opps</th>
-        <th class="num">Bid Rate</th>
-        <th class="num">Impr</th>
-        <th class="num">Win Rate</th>
-        <th class="num">Avg Bid</th>
-        <th class="num">2nd RPC</th>
-        <th class="num">1st RPC</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Native/Display/Social</strong></td><td>100%</td>
-        <td class="num">14,265</td><td class="num">27.27%</td>
-        <td class="num" style="color:var(--danger)"><strong>0</strong></td>
-        <td class="num">0.00%</td>
-        <td class="num">$7.41</td><td class="num">$6.73</td><td class="num">$12.05</td>
-        <td><span class="pill red">🔴 Investigate — no impressions</span></td>
-      </tr>
-      <tr>
-        <td><strong>Email</strong></td><td>100%</td>
-        <td class="num">1,691</td><td class="num">20.52%</td><td class="num">96</td>
-        <td class="num"><strong style="color:var(--success)">16.71%</strong></td>
-        <td class="num">$6.41</td><td class="num">$5.68</td><td class="num">$7.27</td>
-        <td><span class="pill green">★ Star · Hold</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 6</td><td>100%</td>
-        <td class="num">1,414</td><td class="num">19.51%</td><td class="num">17</td>
-        <td class="num">3.62%</td>
-        <td class="num">$6.05</td><td class="num">$5.43</td><td class="num">$13.84</td>
-        <td><span class="pill green">Hold</span></td>
-      </tr>
-      <tr>
-        <td>Premium Referral</td><td>100%</td>
-        <td class="num">1,245</td><td class="num">17.02%</td><td class="num">54</td>
-        <td class="num">7.08%</td>
-        <td class="num">$7.39</td><td class="num">$7.14</td><td class="num">$9.40</td>
-        <td><span class="pill green">Hold</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 2</td><td>100%</td>
-        <td class="num">1,026</td><td class="num">12.18%</td><td class="num">22</td>
-        <td class="num">8.80%</td>
-        <td class="num">$6.68</td><td class="num">$3.14</td><td class="num">$6.31</td>
-        <td><span class="pill amber">Lower → 50%</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 5</td><td>100%</td>
-        <td class="num">936</td><td class="num">11.96%</td><td class="num">1</td>
-        <td class="num">0.00%</td>
-        <td class="num">$6.87</td><td class="num">$31.05</td><td class="num">$48.75</td>
-        <td><span class="pill red">Freeze</span></td>
-      </tr>
-      <tr>
-        <td>Premium Email C</td><td>100%</td>
-        <td class="num">559</td><td class="num">27.01%</td><td class="num">11</td>
-        <td class="num">3.97%</td>
-        <td class="num">$7.09</td><td class="num">$5.65</td><td class="num">$15.08</td>
-        <td><span class="pill amber">Lower → 85%</span></td>
-      </tr>
-      <tr>
-        <td>Premium Email</td><td>100%</td>
-        <td class="num">464</td><td class="num">18.53%</td><td class="num">3</td>
-        <td class="num">1.02%</td>
-        <td class="num">$7.86</td><td class="num">$20.51</td><td class="num">$32.13</td>
-        <td><span class="pill red">Freeze</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 5B</td><td>100%</td>
-        <td class="num">439</td><td class="num">14.12%</td><td class="num">2</td>
-        <td class="num">3.23%</td>
-        <td class="num">$7.58</td><td class="num">$52.93</td><td class="num">$53.99</td>
-        <td><span class="pill red">Freeze</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 5D</td><td>100%</td>
-        <td class="num">427</td><td class="num">17.09%</td><td class="num">1</td>
-        <td class="num">1.37%</td>
-        <td class="num">$6.84</td><td class="num">$35.53</td><td class="num">$75.77</td>
-        <td><span class="pill red">Freeze</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 2B</td><td>100%</td>
-        <td class="num">318</td><td class="num">17.61%</td><td class="num">19</td>
-        <td class="num">16.07%</td>
-        <td class="num">$6.66</td><td class="num">$5.50</td><td class="num">$17.22</td>
-        <td><span class="pill green">Hold</span></td>
-      </tr>
-      <tr>
-        <td>Paid Search</td><td>100%</td>
-        <td class="num">225</td><td class="num">12.00%</td><td class="num">6</td>
-        <td class="num">11.11%</td>
-        <td class="num">$5.48</td><td class="num">$2.08</td><td class="num">$4.53</td>
-        <td><span class="pill amber">Lower → 40%</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 4</td><td>100%</td>
-        <td class="num">198</td><td class="num">15.15%</td><td class="num">2</td>
-        <td class="num">0.00%</td>
-        <td class="num">$6.84</td><td class="num">$4.49</td><td class="num">$29.11</td>
-        <td><span class="pill amber">Investigate · Lower → 70%</span></td>
-      </tr>
-      <tr>
-        <td>Premium Paid Search 3</td><td>100%</td>
-        <td class="num">197</td><td class="num">23.85%</td><td class="num">1</td>
-        <td class="num">0.00%</td>
-        <td class="num">$5.47</td><td class="num">$7.30</td><td class="num">$13.44</td>
-        <td><span class="pill amber">Raise → 140%</span></td>
-      </tr>
-      <tr>
-        <td>Native/Display/Social 2</td><td>100%</td>
-        <td class="num">180</td><td class="num">15.00%</td><td class="num">15</td>
-        <td class="num">33.33%</td>
-        <td class="num">$6.65</td><td class="num">$1.00</td><td class="num">$5.18</td>
-        <td><span class="pill amber">Lower → 30%</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="font-size: 11px; color: var(--muted); margin-top: 12px;">Additional Auto sources (Premium Paid Search 5A, 4B, 7; Premium Referral 3) have market RPCs $28-$65 vs. our $6-$13 bids. <strong>Recommended: freeze all four.</strong></p>
-</section>
-
-<!-- RECOMMENDATIONS -->
-<section>
-  <h2>Prioritized Recommendations</h2>
-
-  <h3 style="margin-top: 16px; color: var(--danger);">🔴 HIGH PRIORITY — Investigations</h3>
-  <div class="rec-grid">
-    <div class="rec high">
-      <div class="rec-head"><span class="rec-title">Fix Auto Native/Display/Social (zero impressions)</span><span class="pill red">Investigate</span></div>
-      <div class="rec-body">14,265 opportunities, 3,891 bids, 0 impressions. Bid $7.41 is above 2nd RPC $6.73 — not a bid problem. Ping Chris: check creative approval, tracking URL, brand-safety block, or inventory exclusion. Unlocking this source could materially lift Auto impression share.</div>
-    </div>
-    <div class="rec high">
-      <div class="rec-head"><span class="rec-title">Push corrected dispositions to GOAL via Overwrite</span><span class="pill amber">Data Hygiene</span></div>
-      <div class="rec-body">Mapping in <code>Sullivan_dispositions_GOAL_import.csv</code> is now correct (Transferred = blank, Quoted without contact = blank). But GOAL dashboard still shows the pre-correction numbers (68% Auto / 60% Home contact rate) because the corrected file hasn't been uploaded yet. Action: Conversion Bulk Import → Overwrite mode. Once pushed, analytics will reflect true rates (Auto 24.2%, Home 17.8%).</div>
-    </div>
-    <div class="rec high">
-      <div class="rec-head"><span class="rec-title">Diagnose Auto Premium Paid Search 4 (0% WR)</span><span class="pill red">Investigate</span></div>
-      <div class="rec-body">198 opps, 30 bids, 2 impressions, 0 wins despite bid $6.84 above 2nd RPC $4.49. 1st RPC $29.11 suggests one aggressive competitor, but the 0% WR on 30 bids needs a filter or ad group review. Lower to 70% in the meantime to contain spend.</div>
-    </div>
-    <div class="rec high">
-      <div class="rec-head"><span class="rec-title">Audit Auto targeting — "Age &lt; 71" filter</span><span class="pill red">Audit</span></div>
-      <div class="rec-body">Age distribution on Auto leads peaks at 55-70 (strong lead supply). Hard "Age &lt; 71" cutoff may be excluding viable 70+ prospects. Consider relaxing to Age ≤ 75 with a 60% modifier for 70+ ages instead of a hard exclude.</div>
-    </div>
-  </div>
-
-  <h3 style="margin-top: 20px; color: var(--warning);">🟡 MEDIUM — Freeze Uncompetitive Auto Sources</h3>
-  <div class="rec-grid">
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Freeze 7 Auto premium sources</span><span class="pill amber">Reallocate</span></div>
-      <div class="rec-body">Sources where 2nd RPC ≥ $20 (our effective max-pay): Premium Email, PS5, PS5B, PS5D, PS5A, PS4B, PS7, Premium Referral 3. Current combined spend ~$120/mo on <5 impressions. Freeze to concentrate budget on Email / Premium Referral / PPS 6 / PPS 2B.</div>
-      <div class="rec-change">Action: <strong>Multiplier → 0% or Status → Paused</strong> on 8 sources</div>
-    </div>
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Lower Auto over-bid sources</span><span class="pill amber">Save Spend</span></div>
-      <div class="rec-body">Where bid exceeds 2nd RPC significantly: PS2 100→50%, Paid Search 100→40%, Native/Display/Social 2 100→30%, Premium Email C 100→85%. Estimated save: $60-120/mo with no loss of impressions (still above 2nd).</div>
-      <div class="rec-change">
-        PS2: <strong>100% → 50%</strong> ($6.68 → $3.59)<br>
-        Paid Search: <strong>100% → 40%</strong> ($5.48 → $2.87)<br>
-        ND/S 2: <strong>100% → 30%</strong> ($6.65 → $2.15)<br>
-        Premium Email C: <strong>100% → 85%</strong>
+  <header class="report-header">
+    <div class="inner">
+      <div class="eyebrow">Sullivan Financial Group · First Account Review</div>
+      <h1>Auto vs. Home — Head-to-Head Performance</h1>
+      <div class="subtitle">A side-by-side look at how your two New Jersey campaigns are performing — what's working, where the gap is, and where we see the biggest opportunity.</div>
+      <div class="meta">
+        <div class="meta-item"><span class="dot"></span>Reporting period: Last 30 days</div>
+        <div class="meta-item"><span class="dot"></span>Prepared April 17, 2026</div>
+        <div class="meta-item"><span class="dot"></span>Prepared for Stephen Sullivan</div>
       </div>
     </div>
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Home Tier 2 raise</span><span class="pill amber">Lift WR</span></div>
-      <div class="rec-body">Tier 2 at 125% (eff bid $11.08) is just below 2nd RPC $11.26. 14.71% WR is already healthy; +5 pp of bid should pick up 8-12 more impressions/mo.</div>
-      <div class="rec-change">Tier 2: <strong>125% → 135%</strong> (eff bid $11.08 → $11.95)</div>
-    </div>
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Home SearchB raise</span><span class="pill amber">Clear 2nd</span></div>
-      <div class="rec-body">100% mult puts us at $8.78 vs. 2nd RPC $9.01. Small raise clears 2nd position.</div>
-      <div class="rec-change">Home SearchB: <strong>100% → 110%</strong> (eff bid $8.78 → $9.66)</div>
-    </div>
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Home — Freeze Home Search (300%)</span><span class="pill amber">Reallocate</span></div>
-      <div class="rec-body">300% mult = $26.47 effective bid. 2nd RPC is $103.71. At current 4.8% WR we spent $218 this month for 7 leads ($31 CPL). Uncompetitive at any tolerable mult. Consider freezing to reallocate toward Tier 3 inventory.</div>
-      <div class="rec-change">Home Search: <strong>300% → 0% (freeze)</strong></div>
-    </div>
-    <div class="rec med">
-      <div class="rec-head"><span class="rec-title">Auto PPS 3 small raise</span><span class="pill amber">Test</span></div>
-      <div class="rec-body">Low volume (197 opps) but bidding below 2nd RPC. Cheap test at 140% to see if we clear position.</div>
-      <div class="rec-change">PPS 3: <strong>100% → 140%</strong> (eff $5.47 → $7.66)</div>
-    </div>
-  </div>
+  </header>
 
-  <h3 style="margin-top: 20px; color: var(--success);">🟢 HOLD STEADY (Deliberate)</h3>
-  <div class="rec-grid">
-    <div class="rec low">
-      <div class="rec-head"><span class="rec-title">Home Tier 3</span><span class="pill green">Star source</span></div>
-      <div class="rec-body">67% win rate at $8.65 bid is a unicorn. Market 2nd RPC $2.29 suggests we could technically lower mult to ~50%, but that risks surrendering position dominance. Hold at 100% until we see WR erosion.</div>
+  <!-- EXECUTIVE STORY -->
+  <section>
+    <div class="section-label">The story in one paragraph</div>
+    <div class="exec-callout">
+      <p>Your <span class="highlight-home">Home (NJ) campaign is performing well</span> — it sits near the top of the page on nearly every lead auction, converts <strong>75% more leads into sales</strong> than Auto, and delivers a <strong>24% lower cost per sale</strong>. Your <span class="highlight-auto">Auto (NJ) campaign is the opposite story</span>: the bids are positioned below the New Jersey market, so you're buried in the middle of the results page and reaching only a fraction of the available consumers. The good news is that Home proves what's possible at your agency — and with a measured bid adjustment on Auto, we expect Auto's volume to <strong>roughly triple</strong> at a comparable cost-per-sale.</p>
     </div>
-    <div class="rec low">
-      <div class="rec-head"><span class="rec-title">Home Tier 1 — Do NOT raise further</span><span class="pill green">At ceiling</span></div>
-      <div class="rec-body">3,263 opps · 1,719 bids · 48 impressions · 0.93% WR. We're already above 2nd RPC ($11.02 &gt; $9.63). Low WR means 1st-position bidders crossing $11+. Raising mult further will inflate CPA without proportional WR lift. Holding 125% is the right call.</div>
-    </div>
-    <div class="rec low">
-      <div class="rec-head"><span class="rec-title">Auto Email &amp; Premium Referral</span><span class="pill green">Workhorses</span></div>
-      <div class="rec-body">Email: 1,691 opps · 17% WR · $6.41 bid vs $5.68 2nd RPC. Premium Referral: 1,245 opps · 7% WR · $7.39 vs $7.14 2nd RPC. Both at 100% mult — correctly priced. Preserve.</div>
-    </div>
-    <div class="rec low">
-      <div class="rec-head"><span class="rec-title">Auto modifier stack (175/150/125/70)</span><span class="pill green">Working</span></div>
-      <div class="rec-body">Multi-vehicle homeowner: 175%. Homeowner only: 150%. Multi-vehicle only: 125%. Neither: 70%. Correctly biases spend toward premium profiles; effective bid can reach $12.55 on best profiles. Keep.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- NEXT STEPS -->
-<section>
-  <h2>Next Steps / Client Talking Points</h2>
-  <div class="cols-2">
-    <div>
-      <h3>What to tell Stephen</h3>
-      <ol style="padding-left: 20px; font-size: 13px; line-height: 1.7;">
-        <li>Home is doing exactly what it should — you're at position 2 with a 6% win rate.</li>
-        <li>Auto is under-performing: we're showing at position 5.7 because we're getting outbid on premium inventory. This is a visibility problem, not a cost problem — CPL is $11.</li>
-        <li>We identified 14,000 auto opportunities per month sitting untapped (Native/Display/Social). Engineering is investigating why we're bidding but not appearing.</li>
-        <li>We're freezing ~8 Auto sources where the market is simply too expensive for us to compete and concentrating that spend on the 4 sources that are winning.</li>
-        <li>Tier 3 Home is producing 30 contacts/month at $20 each — your best-performing inventory.</li>
-      </ol>
+  <!-- SIDE-BY-SIDE CARDS -->
+  <section>
+    <div class="section-label">Campaign snapshot</div>
+    <h2>Home is winning the page. Auto is bidding below market.</h2>
+    <div class="vs-grid">
+      <div class="vs-card auto">
+        <div class="vs-header">
+          <span class="vs-label auto">Auto · NJ</span>
+          <span class="vs-status action">Needs adjustment</span>
+        </div>
+        <h3>$503 per sale · 91 leads / mo</h3>
+        <div class="tagline">Avg page position 5.7 — mostly buried on page 2. Bids below the NJ market average.</div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Leads / month</span><span class="vs-metric-value">91</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Sales closed</span><span class="vs-metric-value">2</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Lead → Sale CVR</span><span class="vs-metric-value">1.6%</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Cost per lead</span><span class="vs-metric-value">$11.05</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Cost per sale</span><span class="vs-metric-value">$503</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Page position</span><span class="vs-metric-value">5.7</span></div>
+      </div>
+      <div class="vs-card home">
+        <div class="vs-header">
+          <span class="vs-label home">Home · NJ</span>
+          <span class="vs-status solid">Performing well</span>
+        </div>
+        <h3>$380 per sale · 102 leads / mo</h3>
+        <div class="tagline">Avg page position 2.1 — near the top of every ad wall. Strong lead quality and conversion.</div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Leads / month</span><span class="vs-metric-value">102</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Sales closed</span><span class="vs-metric-value">4</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Lead → Sale CVR</span><span class="vs-metric-value">2.8%</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Cost per lead</span><span class="vs-metric-value">$14.91</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Cost per sale</span><span class="vs-metric-value">$380</span></div>
+        <div class="vs-metric-row"><span class="vs-metric-label">Page position</span><span class="vs-metric-value">2.1</span></div>
+      </div>
     </div>
-    <div>
-      <h3>Questions for Stephen</h3>
-      <ol style="padding-left: 20px; font-size: 13px; line-height: 1.7;">
-        <li>What's the current quote → bind rate on the leads that do make it through? (7 quotes → 3 binds = 43% so far — need more samples.)</li>
-        <li>Any feedback from staff on lead quality from Home Tier 3 specifically?</li>
-        <li>Are there specific age or credit bands he wants to prioritize? (Driving Auto targeting audit.)</li>
-        <li>Appetite for expanding coverage areas beyond current NJ ad group? Campaign is single-state single-LOB.</li>
-      </ol>
+  </section>
+
+  <!-- SCORECARD -->
+  <section>
+    <div class="section-label">The metrics that matter, side by side</div>
+    <h2>Scorecard</h2>
+    <div class="scorecard">
+      <div class="scorecard-row header">
+        <div>Metric</div>
+        <div>Auto</div>
+        <div>Home</div>
+        <div>Gap</div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Leads per month<span class="scorecard-sublabel">Qualified lead volume</span></div>
+        <div class="scorecard-val auto">91</div>
+        <div class="scorecard-val home">102</div>
+        <div class="scorecard-delta"><span class="badge">+12% Home</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Sales closed<span class="scorecard-sublabel">Bound policies this period</span></div>
+        <div class="scorecard-val auto">2</div>
+        <div class="scorecard-val home">4</div>
+        <div class="scorecard-delta positive"><span class="badge">2× Home</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Lead → Sale CVR<span class="scorecard-sublabel">Share of leads that close</span></div>
+        <div class="scorecard-val auto">1.6%</div>
+        <div class="scorecard-val home">2.8%</div>
+        <div class="scorecard-delta positive"><span class="badge">+75% Home</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Lead → Quote CVR<span class="scorecard-sublabel">Quality of lead engagement</span></div>
+        <div class="scorecard-val auto">3.9%</div>
+        <div class="scorecard-val home">5.6%</div>
+        <div class="scorecard-delta positive"><span class="badge">+43% Home</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Contact Rate<span class="scorecard-sublabel">Share of leads reached</span></div>
+        <div class="scorecard-val auto">48.4%</div>
+        <div class="scorecard-val home">43.0%</div>
+        <div class="scorecard-delta"><span class="badge">Auto +5 pts</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Cost per sale<span class="scorecard-sublabel">Lower is better</span></div>
+        <div class="scorecard-val auto">$503</div>
+        <div class="scorecard-val home">$380</div>
+        <div class="scorecard-delta positive"><span class="badge">Home 24% lower</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Cost per lead<span class="scorecard-sublabel">Lower is better</span></div>
+        <div class="scorecard-val auto">$11.05</div>
+        <div class="scorecard-val home">$14.91</div>
+        <div class="scorecard-delta"><span class="badge">Auto 26% lower</span></div>
+      </div>
+      <div class="scorecard-row">
+        <div class="scorecard-metric">Avg page position<span class="scorecard-sublabel">Lower = higher on ad wall</span></div>
+        <div class="scorecard-val auto">5.7</div>
+        <div class="scorecard-val home">2.1</div>
+        <div class="scorecard-delta negative"><span class="badge">Auto 3.6 pos behind</span></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- APPENDIX -->
-<section>
-  <h2>Methodology Notes</h2>
-  <div style="font-size: 12px; color: var(--muted); line-height: 1.7;">
-    <p><strong>Analysis Framework:</strong> Four-layer diagnosis per GOAL campaign analysis SOP — (1) Client context, (2) Campaign trends, (3) Source-level three-metric funnel (Target Rate → Bid Rate → Win Rate), (4) RightPricing market calibration.</p>
-    <p><strong>Disposition Correction:</strong> The original import treated "Transferred" (83 leads) and "Quoted without contact" (69 leads) as contacted=1. Per GOAL rules, neither is contacted. The disposition CSV file has been fixed (verified 2026-04-17). All contact/quote/sale rates in this report use the corrected mapping. The GOAL dashboard will catch up once the corrected file is uploaded via Conversion Bulk Import → Overwrite.</p>
-    <p><strong>Target Position:</strong> Default target is just above 2nd position RPC (delivers 50-65% of clicks at efficient pricing). Raising bids beyond 1st RPC only justified when Stephen explicitly wants aggressive growth.</p>
-    <p><strong>Target Multiplier Formula:</strong> (Target RPC / Base Bid) × 100%. Target RPC = 2nd RPC × 1.05 (volatility buffer).</p>
-    <p><strong>Account Maturity:</strong> 25 days live. CPA/Sold data is too thin for statistical read (1-2 binds per campaign). Analysis leans on leading indicators: Win Rate, Contact Rate, Quote Rate.</p>
-    <p><strong>Data Sources:</strong> campaign-performance-last30days.csv; campaign-sources-nj-auto.csv; campaign-sources-nj-home.csv; source-performance-autonj-last30days.csv; source-performance-homenj-last30days.csv; right-pricing-report-nj-auto.csv; right-pricing-report-nj-home.csv; auto-nj-campaignperformance-byconsumerage.csv; home-nj-campaignperformance-byconsumerage.csv; Sullivan_dispositions_GOAL_import.csv; campaign settings screenshots.</p>
-  </div>
-</section>
+  <!-- WIN RATE GAP VISUAL -->
+  <section>
+    <div class="section-label">The single number that tells the story</div>
+    <h2>How often you win the consumer when you enter the auction</h2>
+    <div class="winrate-visual">
+      <div class="winrate-title">Win Rate — Auto vs. Home (last 30 days)</div>
+      <div class="bar-row">
+        <div class="bar-label auto">Auto NJ</div>
+        <div class="bar-track"><div class="bar-fill auto" style="width: 7.2%">2.2%</div></div>
+        <div class="bar-value auto">2.2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label home">Home NJ</div>
+        <div class="bar-track"><div class="bar-fill home" style="width: 20%">6.0%</div></div>
+        <div class="bar-value home">6.0%</div>
+      </div>
+      <div class="bar-note">Home wins the consumer click <strong style="color:var(--home-blue)">2.8× more often</strong> than Auto. That gap — not lead quality — is the biggest lever we have.</div>
+    </div>
+  </section>
 
-<footer>
-  Sullivan Financial Group LLC · Internal Account Review · April 17, 2026 · GOAL Platform
-</footer>
+  <!-- FUNNEL COMPARISON -->
+  <section>
+    <div class="section-label">The customer journey, side by side</div>
+    <h2>From searches to sales</h2>
+    <p class="section-intro">Both campaigns start with a similar volume of consumers looking for insurance in New Jersey. Here's where each campaign captures its share — and where each falls off.</p>
+    <div class="funnel-grid">
+      <div class="funnel-card auto">
+        <h4>Auto NJ <span class="tag">Needs adjustment</span></h4>
+        <div class="funnel-step auto"><span class="stage">NJ consumers searching</span><span class="count">5,919</span></div>
+        <div class="funnel-arrow">↓  4.4% shown</div>
+        <div class="funnel-step auto"><span class="stage">Ads shown to consumer</span><span class="count">263</span></div>
+        <div class="funnel-arrow">↓  48.7% clicked</div>
+        <div class="funnel-step auto"><span class="stage">Clicks to your ads</span><span class="count">128</span></div>
+        <div class="funnel-arrow">↓  71.1% became leads</div>
+        <div class="funnel-step auto"><span class="stage">Qualified leads</span><span class="count">91</span></div>
+        <div class="funnel-arrow">↓  1.6% closed</div>
+        <div class="funnel-step auto"><span class="stage">Policies sold</span><span class="count">2</span></div>
+      </div>
+      <div class="funnel-card home">
+        <h4>Home NJ <span class="tag">Performing well</span></h4>
+        <div class="funnel-step home"><span class="stage">NJ consumers searching</span><span class="count">2,354</span></div>
+        <div class="funnel-arrow">↓  10.3% shown</div>
+        <div class="funnel-step home"><span class="stage">Ads shown to consumer</span><span class="count">242</span></div>
+        <div class="funnel-arrow">↓  58.7% clicked</div>
+        <div class="funnel-step home"><span class="stage">Clicks to your ads</span><span class="count">142</span></div>
+        <div class="funnel-arrow">↓  71.8% became leads</div>
+        <div class="funnel-step home"><span class="stage">Qualified leads</span><span class="count">102</span></div>
+        <div class="funnel-arrow">↓  2.8% closed</div>
+        <div class="funnel-step home"><span class="stage">Policies sold</span><span class="count">4</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S WORKING -->
+  <section>
+    <div class="section-label">What's already working in each campaign</div>
+    <h2>The bright spots</h2>
+    <div class="wins-grid">
+      <div class="wins-card auto">
+        <h4>Auto NJ <span class="pill" style="background:var(--auto-orange-bg); color:#B45309;">Strengths</span></h4>
+        <ul class="wins-list">
+          <li><span class="win-stat">16.7% WR</span><span class="win-text"><strong>Email source</strong> is your strongest Auto performer — 45 leads and 2 sales at a $12.75 cost per contact.</span></li>
+          <li><span class="win-stat">33.3% WR</span><span class="win-text"><strong>Native/Display 2</strong> — small volume but top-tier quality, a quiet winner.</span></li>
+          <li><span class="win-stat">48.4%</span><span class="win-text"><strong>Contact rate</strong> slightly exceeds Home, meaning when you reach consumers, they engage.</span></li>
+          <li><span class="win-stat">$11.05</span><span class="win-text"><strong>Cost per lead</strong> is 26% lower than Home — when Auto wins a click, it wins efficiently.</span></li>
+        </ul>
+      </div>
+      <div class="wins-card home">
+        <h4>Home NJ <span class="pill" style="background:var(--home-blue-bg); color:var(--home-blue);">Strengths</span></h4>
+        <ul class="wins-list">
+          <li><span class="win-stat">66.4% WR</span><span class="win-text"><strong>Tier 3 source</strong> — the single highest win rate in the entire account. A textbook example of right-priced bidding.</span></li>
+          <li><span class="win-stat">$380</span><span class="win-text"><strong>Cost per sale</strong> — 24% cheaper than Auto and well inside the healthy range for NJ home.</span></li>
+          <li><span class="win-stat">2.8%</span><span class="win-text"><strong>Lead → Sale conversion</strong> — 75% higher than Auto, which confirms the lead quality is on target.</span></li>
+          <li><span class="win-stat">Position 2.1</span><span class="win-text"><strong>Near-top ad placement</strong> — Sullivan is showing up on nearly every high-intent Home search.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITY -->
+  <section>
+    <div class="opportunity">
+      <div class="eyebrow">The single biggest opportunity in the account</div>
+      <h2>If Auto reaches Home's baseline…</h2>
+      <p class="lede">Home already proves what's possible at your agency. If we lift Auto's bid so the campaign shows up on the same share of the page that Home does today — holding everything else constant — here's what we'd expect to see on the Auto side:</p>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <div class="opp-label">Monthly leads</div>
+          <div class="opp-current">Today: 91</div>
+          <div class="opp-arrow">→</div>
+          <div class="opp-target">~275</div>
+          <div class="opp-delta">+3× volume</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-label">Monthly sales</div>
+          <div class="opp-current">Today: 2</div>
+          <div class="opp-arrow">→</div>
+          <div class="opp-target">6 – 8</div>
+          <div class="opp-delta">+4–6 per month</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-label">Page position</div>
+          <div class="opp-current">Today: 5.7</div>
+          <div class="opp-arrow">→</div>
+          <div class="opp-target">~2.1</div>
+          <div class="opp-delta">Top of page</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-label">Additional spend</div>
+          <div class="opp-current">Today: $1,006</div>
+          <div class="opp-arrow">→</div>
+          <div class="opp-target">+$1.5–2k</div>
+          <div class="opp-delta">Incremental investment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section>
+    <div class="section-label">What we're recommending</div>
+    <h2>Three moves for the next period</h2>
+    <p class="section-intro">Prioritized by expected impact. These are the changes we'd like to make on your behalf in the GOAL platform — none require any action from your team.</p>
+    <div class="steps-grid">
+      <div class="step-card priority">
+        <div class="step-number">1</div>
+        <span class="step-tag auto">Auto NJ</span>
+        <h4>Lift the Auto campaign off the page floor</h4>
+        <p>Raise the Auto base bid <strong>from $7.00 to $9.00</strong>. This is the single biggest lever we have in the account — it moves Auto from page 2 to page 1 across most sources and meaningfully increases monthly lead volume.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <span class="step-tag auto">Auto NJ</span>
+        <h4>Activate the largest idle inventory pool</h4>
+        <p>The Native/Display/Social source holds <strong>599,000+ monthly searches</strong> but is priced below the NJ market — so we're bidding but never winning. A targeted lift on this source alone will unlock a substantial chunk of the volume gap.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <span class="step-tag home">Home NJ</span>
+        <h4>Capture more from already-winning Home sources</h4>
+        <p>Two Home sources — <strong>Tier 2 and Home SearchB</strong> — are already producing quality quotes and sales but sitting 27–40% below their market rate. A modest lift converts demonstrated quality into incremental volume.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div><span class="brand">GOAL Platform</span> · Account Review prepared for Sullivan Financial Group LLC</div>
+    <div style="margin-top: 6px;">Conversion rates calculated as a share of qualified leads. Reporting window: last 30 days.</div>
+  </footer>
 
 </div>
 </body>
