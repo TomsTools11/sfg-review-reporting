@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sullivan Financial Group — Account Reviews | April 2026</title>
+<style>
+  :root {
+    --goal-brand: #0479DF;
+    --goal-brand-dark: #00172D;
+    --goal-brand-mid: #0B3E6B;
+    --goal-accent: #3AEECA;
+    --goal-light-blue: #EEF5FC;
+    --goal-light-grey: #F8F9FC;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background: var(--goal-light-grey);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .page-header {
+    background: linear-gradient(135deg, var(--goal-brand-dark) 0%, var(--goal-brand-mid) 60%, var(--goal-brand) 100%);
+    color: white;
+    padding: 72px 32px 88px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: var(--goal-light-grey);
+    clip-path: polygon(0 100%, 100% 100%, 100% 40%, 0 100%);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--goal-accent);
+    margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .page-header .subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.82);
+    font-weight: 400;
+    max-width: 640px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .header-meta .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-meta .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--goal-accent);
+  }
+
+  /* Cards */
+  main {
+    flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: -40px auto 0;
+    padding: 0 32px 64px;
+    position: relative;
+    z-index: 2;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding-left: 4px;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 10px 30px -10px rgba(15,23,42,0.08);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--goal-brand) 0%, var(--goal-accent) 100%);
+    opacity: 0.9;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(15,23,42,0.06), 0 20px 40px -10px rgba(4,121,223,0.18);
+    border-color: var(--goal-brand);
+  }
+  .card-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+  }
+  .card-tag.client {
+    background: var(--goal-light-blue);
+    color: var(--goal-brand);
+  }
+  .card-tag.internal {
+    background: rgba(58,238,202,0.18);
+    color: #0B7A5E;
+  }
+  .card h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+    color: var(--goal-brand-dark);
+  }
+  .card-description {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+  .card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-features li {
+    font-size: 13.5px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-features li::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--goal-brand);
+    flex-shrink: 0;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--goal-brand);
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    transition: gap 0.2s ease;
+  }
+  .card:hover .card-cta { gap: 12px; }
+  .card-cta svg {
+    width: 14px; height: 14px;
+    transition: transform 0.2s ease;
+  }
+  .card:hover .card-cta svg { transform: translateX(2px); }
+
+  /* Footer */
+  footer {
+    padding: 24px 32px 32px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    background: white;
+  }
+  footer .brand {
+    font-weight: 700;
+    color: var(--goal-brand-dark);
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 56px 24px 80px; }
+    .page-header h1 { font-size: 30px; }
+    main { padding: 0 20px 48px; }
+    .card { padding: 26px; }
+  }
+</style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="eyebrow">GOAL Platform · Performance Reporting</div>
+      <h1>Sullivan Financial Group</h1>
+      <div class="subtitle">First Account Review — April 2026. Two perspectives on the same campaign: one built for client delivery, one for internal diagnosis and bid calibration.</div>
+      <div class="header-meta">
+        <div class="meta-item"><span class="dot"></span>Reporting period: Feb 1 – Apr 14, 2026</div>
+        <div class="meta-item"><span class="dot"></span>Generated Apr 17, 2026</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">Select a report</div>
+    <div class="card-grid">
+      <a class="card" href="./client-review.html">
+        <span class="card-tag client">Client-Facing</span>
+        <h2>Client Review</h2>
+        <p class="card-description">The polished performance narrative designed for delivery to Sullivan Financial Group — focused on outcomes, volume trends, and forward-looking recommendations.</p>
+        <ul class="card-features">
+          <li>Executive summary &amp; highlights</li>
+          <li>Volume &amp; spend trends</li>
+          <li>Quality &amp; conversion signals</li>
+          <li>Recommendations for next quarter</li>
+        </ul>
+        <span class="card-cta">
+          Open client review
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="card" href="./internal-review.html">
+        <span class="card-tag internal">Internal</span>
+        <h2>Internal Review</h2>
+        <p class="card-description">The full diagnostic view for the account management team — source-level economics, win-rate diagnosis, bid calibration math, and action items.</p>
+        <ul class="card-features">
+          <li>Source-level performance matrix</li>
+          <li>Win rate &amp; bid rate diagnosis</li>
+          <li>RightPricing calibration</li>
+          <li>Bid multiplier recommendations</li>
+        </ul>
+        <span class="card-cta">
+          Open internal review
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <span class="brand">GOAL Platform</span> · Sullivan Financial Group LLC · Account Reviews
+  </footer>
+</body>
+</html>
